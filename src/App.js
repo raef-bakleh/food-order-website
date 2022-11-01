@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import MealList from "./Components/Meals/MealList";
 import CartContent from "./Components/Cart/CartContent";
-
+import { CartContext } from "./Components/Cart/CartContext";
 function App() {
   const DUMMY_MEALS = [
     {
@@ -34,15 +34,20 @@ function App() {
     setIsVisible(true);
   };
   const hideCart = () => {
-    setIsVisible(false)
-  }
-
+    setIsVisible(false);
+  };
+  const reducer = DUMMY_MEALS.reduce((acc, obj) => {
+    return acc + obj.price;
+  });
+  console.log(reducer);
+  const [cartAmount,setCartAmount]=useState(0)
+  const [cartItems,setCartItems]=useState([])
+  const [totalAmount,setTotalAmount] = useState(0)
   return (
-    <Fragment>
+    <CartContext.Provider value={{cartAmount,setCartAmount,cartItems,setCartItems,totalAmount,setTotalAmount}}>
       {isVisible && <CartContent hideCart={hideCart} />}
-
-      {!isVisible && <MealList showCart={showCart} meals={DUMMY_MEALS} />}
-    </Fragment>
+      {<MealList showCart={showCart} meals={DUMMY_MEALS} />}
+    </CartContext.Provider>
   );
 }
 

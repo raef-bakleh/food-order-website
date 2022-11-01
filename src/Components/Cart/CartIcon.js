@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import classes from "./CartIcon.module.css";
-
+import { CartContext } from "./CartContext";
 
 function CartIcon(props) {
+ const {cartAmount} = useContext(CartContext)
 
   return (
     <Fragment>
@@ -42,7 +43,7 @@ function CartIcon(props) {
           />
           "6"
         </svg>
-        <span className={classes.badge}>{props.number}</span>
+        <span className={classes.badge}>{cartAmount}</span>
       </button>
     </Fragment>
   );

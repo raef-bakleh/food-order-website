@@ -1,28 +1,41 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import Header from "../Header/Header";
 import classes from "./MealList.module.css";
-
+import { CartContext } from "../Cart/CartContext";
 function MealList(props) {
-
-  const [count, setCount] = useState(0);
+ 
+  const { cartAmount, setCartAmount, cartItems, setCartItems } =
+    useContext(CartContext);
 
   const updateCart = () => {
-    setCount(count + 1);
+    setCartAmount(cartAmount + 1);
+    // console.log(cartAmount);
   };
+
+  // console.log(cartItems);
 
   return (
     <Fragment>
-      <Header showcart={props.showCart} number={count}/>
+      <Header showcart={props.showCart} number={count} />
       <section className={classes.meals}>
-
         <ul>
           {props.meals.map((meal) => (
-            <li key = {meal.id} className={classes.meal}>
+            <li key={meal.id} className={classes.meal}>
               {meal.name}
               <h3 className={classes.description}>{meal.description}</h3>
               <h3 className={classes.price}> {meal.price}</h3>
               <div>
-                <button onClick={updateCart}>Add To Cart</button>
+                <button
+                  onClick={() => {
+                    setCartAmount(cartAmount + 1);
+                    setCartItems((prevMeals)=> {
+                      return [meal,...prevMeals]
+                    });
+                    
+                  }}
+                >
+                  Add To Cart
+                </button>
                 {/* <button onClick={decrease}>-</button> */}
               </div>
             </li>

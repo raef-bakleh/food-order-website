@@ -42,3 +42,9 @@
   background-color: #8a2b06;
   color: white;
 }
+
+.overview{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
