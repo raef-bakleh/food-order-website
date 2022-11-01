@@ -4,7 +4,7 @@ import classes from "./MealList.module.css";
 import { CartContext } from "../Cart/CartContext";
 function MealList(props) {
  
-  const { cartAmount, setCartAmount, cartItems, setCartItems } =
+  const { cartAmount, setCartAmount, cartItems, setCartItems,totalAmount,setTotalAmount } =
     useContext(CartContext);
 
   const updateCart = () => {
@@ -16,7 +16,7 @@ function MealList(props) {
 
   return (
     <Fragment>
-      <Header showcart={props.showCart} number={count} />
+      <Header showcart={props.showCart}  />
       <section className={classes.meals}>
         <ul>
           {props.meals.map((meal) => (
