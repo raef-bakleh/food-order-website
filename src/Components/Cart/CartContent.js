@@ -35,7 +35,7 @@ function CartContent(props) {
             return (
               <div className={classes.overview} type="scroll">
                 <div>
-                  <div className={classes.quantity}>{item.quantity}x</div>
+                  <div className={classes.quantity}>{item.quantity} x {item.priceOne}</div>
                 </div>
               </div>
             );

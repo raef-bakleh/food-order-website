@@ -15,11 +15,12 @@
   border-radius: 15px;
   color: white;
   animation: appear 1s ease-out forwards;
-
 }
 
-@keyframes type{ 
-  from { width: 0; } 
+@keyframes type {
+  from {
+    width: 0;
+  }
 }
 @keyframes appear {
   from {
@@ -32,4 +33,3 @@
     transform: translateY(0);
   }
 }
-
