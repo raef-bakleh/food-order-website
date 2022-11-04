@@ -3,9 +3,17 @@ import Header from "../Header/Header";
 import classes from "./MealList.module.css";
 import { CartContext } from "../Cart/CartContext";
 function MealList(props) {
- 
-  const { cartAmount, setCartAmount, cartItems, setCartItems,totalAmount,setTotalAmount } =
-    useContext(CartContext);
+  const {
+    mealQuantitiy,
+    setMealQuantitiy,
+    cartAmount,
+    setCartAmount,
+    cartItems,
+    setCartItems,
+    totalAmount,
+    setTotalAmount,
+  } = useContext(CartContext);
+
 
   const updateCart = () => {
     setCartAmount(cartAmount + 1);
@@ -16,7 +24,7 @@ function MealList(props) {
 
   return (
     <Fragment>
-      <Header showcart={props.showCart}  />
+      <Header showcart={props.showCart} />
       <section className={classes.meals}>
         <ul>
           {props.meals.map((meal) => (
@@ -26,12 +34,23 @@ function MealList(props) {
               <h3 className={classes.price}> {meal.price}</h3>
               <div>
                 <button
+                  className={classes.button}
+                
                   onClick={() => {
                     setCartAmount(cartAmount + 1);
-                    setCartItems((prevMeals)=> {
-                      return [meal,...prevMeals]
+                    setTotalAmount(totalAmount + meal.price);
+                    setMealQuantitiy(1)
+
+                    setCartItems((prevMeals) => {
+                      const allMeals = [meal, ...prevMeals];
+                      const mealsInCart = prevMeals.map((meal) => meal);
+
+                      if (mealsInCart.some((item) => item.id === meal.id)) {
+                        return (mealsInCart.map(item => item.id === meal.id?{...item,quantity:item.quantity+1,price:item.price + meal.price} : item));
+                      } else {
+                        return allMeals;
+                      }
                     });
-                    
                   }}
                 >
                   Add To Cart

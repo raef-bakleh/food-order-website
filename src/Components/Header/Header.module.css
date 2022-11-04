@@ -22,9 +22,10 @@
 .img img {
   background-image: url(../Images/Restaurant.jpg);
   width: 110%;
-  height: 100%;
-  object-fit: contain;
+  height: 90%;
   transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -33,27 +34,7 @@
 
 
 
-.bump {
-  animation: bump 300ms ease-out;
-}
 
-@keyframes bump {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(0.9);
-  }
-  30% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
 
 
