@@ -48,22 +48,6 @@
   flex-direction: row;
   justify-content: space-between;
 }
-/* 
-.oneItem {
-  width: 600px;
-  display: flex;
-  flex-direction: row;
-}
-.price{
-  margin-left: auto;
-}
-.quantity{
-  display: flex;
-align-self: center;
-
-  
-} */
-
 .quantity{
   padding-left: 40px;
 }
@@ -77,4 +61,7 @@ span[id="meal"]{
   color: #5a1a01;
   font-size: 30px;
   margin-bottom: 30px;
+}
+.orderDone{
+  
 }

@@ -1,48 +1,40 @@
-import { Fragment, useState } from "react";
+import { useState, useEffect } from "react";
 import MealList from "./Components/Meals/MealList";
 import CartContent from "./Components/Cart/CartContent";
 import { CartContext } from "./Components/Cart/CartContext";
 import { FilterContext } from "./Components/Filter/FilterContext";
-import Navbar from "./NavBar/Navbar";
+
 function App() {
-  const DUMMY_MEALS = [
-    {
-      id: "m1",
-      name: "Sushi",
-      description: "Finest fish and veggies",
-      price: 22.99,
-      priceOne: 22.99,
-      quantity: 1,
-      value: "bestSeller",
-    },
-    {
-      id: "m2",
-      name: "Schnitzel",
-      description: "A german specialty!",
-      price: 16.5,
-      priceOne: 16.5,
-      quantity: 1,
-      value: "availble",
-    },
-    {
-      id: "m3",
-      name: "Barbecue Burger",
-      description: "American, raw, meaty",
-      price: 12.99,
-      priceOne: 12.99,
-      quantity: 1,
-      value: "availble",
-    },
-    {
-      id: "m4",
-      name: "Green Bowl",
-      description: "Healthy...and green...",
-      price: 18.99,
-      priceOne: 18.99,
-      quantity: 1,
-      value: "availble",
-    },
-  ];
+  const [DUMMY_MEALS, setDummyMeals] = useState([]);
+  const [isLoadingMeals, setIsLoadingMeals] = useState(false);
+  useEffect(() => {
+    setIsLoadingMeals(true);
+    const fetchMeals = async () => {
+      const response = await fetch(
+        "https://food-order-aa5fe-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
+      );
+      const retrievedData = await response.json();
+      const convertedToList = [];
+
+      for (const key in retrievedData) {
+        convertedToList.push({
+          id: key,
+          name: retrievedData[key].name,
+          description: retrievedData[key].description,
+          price: retrievedData[key].price,
+          priceOne: retrievedData[key].priceOne,
+          quantity: retrievedData[key].quantity,
+          value: retrievedData[key].value,
+        });
+      }
+      setDummyMeals(convertedToList);
+      setIsLoadingMeals(false);
+    };
+    
+      fetchMeals();
+   
+  }, []);
+
   const [isVisible, setIsVisible] = useState(false);
   const showCart = () => {
     setIsVisible(true);
@@ -60,7 +52,6 @@ function App() {
   const [filterdMeals, setFilterMeals] = useState("availble");
   return (
     <div id="App">
-
       <CartContext.Provider
         value={{
           mealQuantitiy,
@@ -74,7 +65,7 @@ function App() {
         }}
       >
         {isVisible && <CartContent hideCart={hideCart} />}
-        
+
         <FilterContext.Provider value={{ filterdMeals, setFilterMeals }}>
           {<MealList showCart={showCart} meals={DUMMY_MEALS} />}
         </FilterContext.Provider>
