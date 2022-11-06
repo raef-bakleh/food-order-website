@@ -17,11 +17,7 @@
   background-color: #92320c;
 
 }
-.button:hover,
-.button:active {
-  background-color: #2c0d00;
-  padding: 1% 1%;
-}
+
 
 .icon {
   width: 1.35rem;
@@ -42,7 +38,6 @@ svg:focus {
 .button:hover,
 .button:active {
   background-color: #2c0d00;
-  padding: 2% 10%;
 }
 
 .icon {

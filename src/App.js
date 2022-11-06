@@ -3,6 +3,7 @@ import MealList from "./Components/Meals/MealList";
 import CartContent from "./Components/Cart/CartContent";
 import { CartContext } from "./Components/Cart/CartContext";
 import { FilterContext } from "./Components/Filter/FilterContext";
+import Navbar from "./NavBar/Navbar";
 function App() {
   const DUMMY_MEALS = [
     {
@@ -57,25 +58,28 @@ function App() {
   );
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [filterdMeals, setFilterMeals] = useState("availble");
-
   return (
-    <CartContext.Provider
-      value={{
-        mealQuantitiy,
-        setMealQuantitiy,
-        cartAmount,
-        setCartAmount,
-        cartItems,
-        setCartItems,
-        totalAmount,
-        setTotalAmount,
-      }}
-    >
-      {isVisible && <CartContent hideCart={hideCart} />}
-      <FilterContext.Provider value={{ filterdMeals, setFilterMeals }}>
-        {<MealList showCart={showCart} meals={DUMMY_MEALS} />}
-      </FilterContext.Provider>
-    </CartContext.Provider>
+    <div id="App">
+
+      <CartContext.Provider
+        value={{
+          mealQuantitiy,
+          setMealQuantitiy,
+          cartAmount,
+          setCartAmount,
+          cartItems,
+          setCartItems,
+          totalAmount,
+          setTotalAmount,
+        }}
+      >
+        {isVisible && <CartContent hideCart={hideCart} />}
+        
+        <FilterContext.Provider value={{ filterdMeals, setFilterMeals }}>
+          {<MealList showCart={showCart} meals={DUMMY_MEALS} />}
+        </FilterContext.Provider>
+      </CartContext.Provider>
+    </div>
   );
 }
 

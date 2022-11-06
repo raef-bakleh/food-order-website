@@ -1,5 +1,10 @@
+.container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,9 +14,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
+  padding: 0 2%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 10;
+  z-index: 100;
+}
+.first{
+  display:flex;
+  gap:15px;
+  align-items: center;
 }
 .img {
   width: 100%;
