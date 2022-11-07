@@ -27,7 +27,7 @@ function MealList(props) {
   });
   return (
     <Fragment>
-      <Header showcart={props.showCart} />
+      <Header showcart={props.showCart} isLoadingMeals={props.isLoadingMeals}/>
       <Card>
         <Filter />
         <section className={classes.meals}>

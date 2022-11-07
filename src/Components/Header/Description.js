@@ -5,9 +5,8 @@ import classes from "./Description.module.css";
 function Description(props) {
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
-
   const [show3, setShow3] = useState(false);
-
+console.log(props.isLoadingMeals)
   useEffect(() => {
     setTimeout(function () {
       setShow1(true);
@@ -25,10 +24,10 @@ function Description(props) {
   }, []);
   return (
     <div className={classes.description}>
-      {props.isLoading ? <p>Loading Meals...</p> : <></>}
-      {show1 ? <h4>are you haungry?</h4> : <></>}
-      {show2 ? <h1>Don't wait</h1> : <></>}
-      {show3 ? <h4>lets start to order food now </h4> : <></>}
+      {props.isLoadingMeals ? <p>Loading Meals...</p> : <></>}
+      {!props.isLoadingMeals && show1 ? <h4>are you haungry?</h4> : <></>}
+      {!props.isLoadingMeals && show2 ? <h1>Don't wait</h1> : <></>}
+      {!props.isLoadingMeals && show3 ? <h4>lets start to order food now </h4> : <></>}
     </div>
   );
 }

@@ -27,12 +27,10 @@ function App() {
           value: retrievedData[key].value,
         });
       }
-      setDummyMeals(convertedToList);
       setIsLoadingMeals(false);
+      setDummyMeals(convertedToList);
     };
-    
-      fetchMeals();
-   
+    fetchMeals();
   }, []);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -49,7 +47,7 @@ function App() {
     DUMMY_MEALS.map((e) => e.quantity)
   );
   const [totalAmount, setTotalAmount] = useState(0.0);
-  const [filterdMeals, setFilterMeals] = useState("availble");
+  const [filterdMeals, setFilterMeals] = useState("bestSeller");
   return (
     <div id="App">
       <CartContext.Provider
@@ -67,7 +65,13 @@ function App() {
         {isVisible && <CartContent hideCart={hideCart} />}
 
         <FilterContext.Provider value={{ filterdMeals, setFilterMeals }}>
-          {<MealList showCart={showCart} meals={DUMMY_MEALS} />}
+          {
+            <MealList
+              showCart={showCart}
+              meals={DUMMY_MEALS}
+              isLoadingMeals={isLoadingMeals}
+            />
+          }
         </FilterContext.Provider>
       </CartContext.Provider>
     </div>

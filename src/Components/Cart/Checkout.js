@@ -8,7 +8,7 @@ function Checkout(props) {
   const inputStreetRef = useRef();
   const inputPostalCodeRef = useRef();
   const inputCityRef = useRef();
-const [orderMade,setOrderMade]=useState(true)
+  const [orderMade, setOrderMade] = useState(true);
   const inputHandler = (event) => {
     event.preventDefault();
     const enteredName = inputNameRef.current.value;
@@ -16,31 +16,34 @@ const [orderMade,setOrderMade]=useState(true)
     const enteredPostal = inputPostalCodeRef.current.value;
     const enteredStreet = inputStreetRef.current.value;
 
-    props.onConfirm({
-      name: enteredName,
-      city: enteredCity,
-      postalCode: enteredPostal,
-      street: enteredStreet,
-    },orderMade);
+    props.onConfirm(
+      {
+        name: enteredName,
+        city: enteredCity,
+        postalCode: enteredPostal,
+        street: enteredStreet,
+      },
+      orderMade
+    );
   };
 
   return (
     <form className={classes.form} onSubmit={inputHandler}>
       <div className={classes.control}>
         <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" ref={inputNameRef} />
+        <input required type="text" id="name" ref={inputNameRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor="street">Street</label>
-        <input type="text" id="street" ref={inputStreetRef} />
+        <input required type="text" id="street" ref={inputStreetRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor="postal">Postal Code</label>
-        <input type="text" id="postal" ref={inputPostalCodeRef} />
+        <input required type="text" id="postal" ref={inputPostalCodeRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor="city">City</label>
-        <input type="text" id="city" ref={inputCityRef} />
+        <input required type="text" id="city" ref={inputCityRef} />
       </div>
       <div className={classes.actions}>
         <button type="submit">Confirm</button>

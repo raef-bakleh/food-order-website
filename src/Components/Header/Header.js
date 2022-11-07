@@ -4,8 +4,7 @@ import Description from "./Description";
 import classes from "./Header.module.css";
 import CartIcon from "../Cart/CartIcon.js";
 import { CartContext } from "../Cart/CartContext";
-import Navbar from "../../NavBar/Navbar";
-
+import Navbar from "../NavBar/Navbar";
 function Header(props) {
   const [isClosed, setIsClosed] = useState(true);
 
@@ -23,7 +22,7 @@ function Header(props) {
       <div className={classes.img}>
         <img />
       </div>
-      <Description />
+      <Description isLoadingMeals={props.isLoadingMeals} />
     </div>
   );
 }

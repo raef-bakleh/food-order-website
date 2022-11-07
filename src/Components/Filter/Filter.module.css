@@ -1,30 +1,27 @@
-.nav{
-    display: felx;
-   position: relative;
-   top: -90px;
-    color: rgb(228, 210, 210);
-    border: 1px solid black;
-    justify-content: center;
-    justify-content: center;
-    height:40px;
-    min-width: 60%;
-    background-color: #5a1a01;
-    border-radius: 15px;
-    border-bottom: none;
-    padding-left: 15px;
-    padding-right: 15px;
-    
-
-    
+.nav {
+  display: felx;
+  position: relative;
+  top: -90px;
+  color: rgb(228, 210, 210);
+  border: 1px solid black;
+  justify-content: center;
+  justify-content: center;
+  height: 40px;
+  width: 60%;
+  background-color: #5a1a01;
+  border-radius: 15px;
+  border-bottom: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 900px;
 }
-.nav ul{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    justify-content: center;
-
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
 }
 .nav ul li {
-    cursor: pointer;
-    list-style-type: none;
+  cursor: pointer;
+  list-style-type: none;
 }
